@@ -28,3 +28,6 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Vyxia architecture
+- Keep student profiles, lesson records, threaded AI history, quizzes, and attachments in Lovable Cloud with owner-scoped access; keep provider calls in authenticated TanStack server routes so credentials never reach browser code.
