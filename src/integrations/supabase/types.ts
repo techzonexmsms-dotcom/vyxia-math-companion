@@ -14,7 +14,245 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      chat_attachments: {
+        Row: {
+          bucket_id: string
+          created_at: string
+          filename: string
+          id: string
+          media_type: string
+          message_id: string | null
+          object_path: string
+          thread_id: string
+          user_id: string
+        }
+        Insert: {
+          bucket_id: string
+          created_at?: string
+          filename: string
+          id?: string
+          media_type: string
+          message_id?: string | null
+          object_path: string
+          thread_id: string
+          user_id: string
+        }
+        Update: {
+          bucket_id?: string
+          created_at?: string
+          filename?: string
+          id?: string
+          media_type?: string
+          message_id?: string | null
+          object_path?: string
+          thread_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "chat_attachments_thread_id_fkey"
+            columns: ["thread_id"]
+            isOneToOne: false
+            referencedRelation: "threads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      chat_messages: {
+        Row: {
+          ai_message_id: string | null
+          ai_model: string | null
+          content: string
+          created_at: string
+          id: string
+          parts: Json
+          role: string
+          thread_id: string
+          user_id: string
+        }
+        Insert: {
+          ai_message_id?: string | null
+          ai_model?: string | null
+          content?: string
+          created_at?: string
+          id?: string
+          parts?: Json
+          role: string
+          thread_id: string
+          user_id: string
+        }
+        Update: {
+          ai_message_id?: string | null
+          ai_model?: string | null
+          content?: string
+          created_at?: string
+          id?: string
+          parts?: Json
+          role?: string
+          thread_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "chat_messages_thread_id_fkey"
+            columns: ["thread_id"]
+            isOneToOne: false
+            referencedRelation: "threads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      lessons: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          page_end: number
+          page_start: number
+          sort_order: number
+          title: string
+          unit_number: number
+          unit_title: string
+        }
+        Insert: {
+          content?: string
+          created_at?: string
+          id?: string
+          page_end: number
+          page_start: number
+          sort_order: number
+          title: string
+          unit_number: number
+          unit_title: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          page_end?: number
+          page_start?: number
+          sort_order?: number
+          title?: string
+          unit_number?: number
+          unit_title?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          display_name: string
+          grade: string
+          id: string
+          school: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          display_name?: string
+          grade?: string
+          id: string
+          school?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          display_name?: string
+          grade?: string
+          id?: string
+          school?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      quizzes: {
+        Row: {
+          ai_model: string
+          answers: Json
+          completed_at: string | null
+          created_at: string
+          id: string
+          lesson_id: string | null
+          questions: Json
+          score: number | null
+          status: string
+          title: string
+          user_id: string
+        }
+        Insert: {
+          ai_model: string
+          answers?: Json
+          completed_at?: string | null
+          created_at?: string
+          id?: string
+          lesson_id?: string | null
+          questions?: Json
+          score?: number | null
+          status?: string
+          title: string
+          user_id: string
+        }
+        Update: {
+          ai_model?: string
+          answers?: Json
+          completed_at?: string | null
+          created_at?: string
+          id?: string
+          lesson_id?: string | null
+          questions?: Json
+          score?: number | null
+          status?: string
+          title?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "quizzes_lesson_id_fkey"
+            columns: ["lesson_id"]
+            isOneToOne: false
+            referencedRelation: "lessons"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      threads: {
+        Row: {
+          created_at: string
+          id: string
+          lesson_id: string | null
+          model_id: string
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          lesson_id?: string | null
+          model_id?: string
+          title?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          lesson_id?: string | null
+          model_id?: string
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "threads_lesson_id_fkey"
+            columns: ["lesson_id"]
+            isOneToOne: false
+            referencedRelation: "lessons"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
