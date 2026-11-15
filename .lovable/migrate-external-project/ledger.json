@@ -1,0 +1,19 @@
+{
+  "source": "github:https://github.com/aixteampr-cpu/vyxia-math-companion.git",
+  "updated_at": "2026-11-15",
+  "capabilities": [
+    { "capability": "application code and routes", "source": "GitHub repository", "outcome": "migrate", "status": "in_progress", "next_action": "Port the existing Vyxia experience into the current TanStack Start app and verify its primary screens." },
+    { "capability": "database schema", "source": "Drizzle SQL migrations in the repository", "outcome": "migrate", "status": "pending", "next_action": "Apply the compatible schema to Lovable Cloud and verify access policies." },
+    { "capability": "lesson records", "source": "Repository lesson catalog; no record export attached", "outcome": "migrate", "status": "pending", "next_action": "Load the available curriculum catalog and verify lesson selection." },
+    { "capability": "student conversation, quiz, and profile records", "source": "Existing database records not attached", "outcome": "migrate", "status": "pending", "next_action": "Request sanitized CSV or JSON exports after the app preview; keep current records pending." },
+    { "capability": "authentication identities", "source": "Source user export not attached", "outcome": "migrate", "status": "pending", "next_action": "Request user identity export after preview; implement Cloud sign-in and identity linking only with verified email ownership." },
+    { "capability": "authorization and row ownership", "source": "Repository SQL policies and authenticated APIs", "outcome": "migrate", "status": "pending", "next_action": "Preserve owner-scoped access in Cloud and verify cross-user isolation." },
+    { "capability": "uploaded file bytes", "source": "No uploaded-file export attached", "outcome": "migrate", "status": "pending", "next_action": "Use private Cloud storage for new uploads; request existing file bytes if source files exist." },
+    { "capability": "AI models and image generation", "source": "Lovable AI Gateway integration in repository", "outcome": "preserve", "status": "pending", "next_action": "Preserve the three chosen tutor models and image generation through Lovable AI, then verify responses." },
+    { "capability": "public endpoints and callbacks", "source": "Repository routes and configuration", "outcome": "migrate", "status": "pending", "next_action": "Inspect endpoint callers and preserve app-owned API behavior." },
+    { "capability": "webhooks and schedules", "source": "Repository inspection", "outcome": "preserve", "status": "pending", "next_action": "Confirm whether any production webhook or scheduled caller exists before declaring none." },
+    { "capability": "secrets and provider configuration", "source": "Source environment file excluded from inspection", "outcome": "preserve", "status": "pending", "next_action": "Keep Lovable-managed AI/auth configuration; never copy source environment secrets into the repository." },
+    { "capability": "cutover", "source": "Existing GitHub application", "outcome": "migrate", "status": "pending", "next_action": "Preserve existing source URLs and callers until a deliberate cutover is approved." },
+    { "capability": "verification", "source": "Application behavior", "outcome": "migrate", "status": "pending", "next_action": "Verify public page, signed-in chat, persistence, quiz, upload, image generation, and responsive layout." }
+  ]
+}
